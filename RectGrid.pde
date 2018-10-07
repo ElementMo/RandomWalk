@@ -27,16 +27,16 @@ class RectGrid extends Grid
 
       switch(c) {
       case 1:
-        tempPos.x += STEPDIST+GAPSCALE;
+        tempPos.x += STEPDIST*GAPSCALE;
         break;
       case 2:
-        tempPos.x -= STEPDIST+GAPSCALE;
+        tempPos.x -= STEPDIST*GAPSCALE;
         break;
       case 3:
-        tempPos.y += STEPDIST+GAPSCALE;
+        tempPos.y += STEPDIST*GAPSCALE;
         break;
       case 4:
-        tempPos.y -= STEPDIST+GAPSCALE;
+        tempPos.y -= STEPDIST*GAPSCALE;
         break;
       }
       if (constrained) {

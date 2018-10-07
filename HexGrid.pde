@@ -1,7 +1,7 @@
 class HexGrid extends Grid
 {
-  int spawn_width = (int)(width/(STEPDIST*sqrt(3))*2);
-  int spawn_height = (int)(height/(STEPDIST));
+  int spawn_width = (int)(800/(STEPDIST*GAPSCALE)*sqrt(3))*2;
+  int spawn_height = (int)(800/(STEPDIST*GAPSCALE));
 
   HexGrid() {
     pos = new PVector(spawn_width/2, spawn_height/2);
@@ -10,9 +10,8 @@ class HexGrid extends Grid
   @Override
     void initGridSize()
   {
-    spawn_width = (int)(width/(STEPDIST*sqrt(3))*2);
-    spawn_height = (int)(height/(STEPDIST));
-    grids.clear();
+    spawn_width = (int)(800/(STEPDIST*GAPSCALE*sqrt(3))*2);
+    spawn_height = (int)(800/(STEPDIST*GAPSCALE));
     pos = new PVector(spawn_width/2, spawn_height/2);
   }
 
@@ -24,15 +23,16 @@ class HexGrid extends Grid
       PVector gridPos = (PVector)grid.getKey();
       PVector hexPos = new PVector(0, 0);
 
-      hexPos.x = gridPos.x * STEPDIST * 0.5 * sqrt(3);
+      hexPos.x = gridPos.x * STEPDIST * 0.5 * sqrt(3)*GAPSCALE + 205;
       if (gridPos.x % 2 == 0) {
-        hexPos.y = gridPos.y * STEPDIST;
+        hexPos.y = gridPos.y * STEPDIST*GAPSCALE + BORDERSIZE;
       } else if (gridPos.x % 2 != 0) {
-        hexPos.y = gridPos.y * STEPDIST - STEPDIST/2;
+        hexPos.y = gridPos.y * STEPDIST*GAPSCALE - STEPDIST/2 + BORDERSIZE;
       }
       if (ISTINT) {
         fill((int)grid.getValue(), 200, 200);
       }
+
       beginShape();
       vertex(hexPos.x + STEPDIST/sqrt(3), hexPos.y);
       vertex(hexPos.x + STEPDIST/sqrt(3)*0.5, hexPos.y + STEPDIST/2);
@@ -100,10 +100,10 @@ class HexGrid extends Grid
         }
       }
       if (constrained) {
-        if (tempPos.x>(240/STEPDIST) &&
-          tempPos.x< spawn_width &&
-          tempPos.y> 1 &&
-          tempPos.y< spawn_height) {
+        if (tempPos.x > 0 &&
+          tempPos.x < spawn_width &&
+          tempPos.y > 0 &&
+          tempPos.y < spawn_height) {
 
           pos = tempPos;
           walkOn(pos);

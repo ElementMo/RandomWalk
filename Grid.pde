@@ -9,7 +9,7 @@ abstract class Grid
   int CURRENTSTEPS = 0;
   int STEPRATE = 0;
   int STEPDIST = 10;
-  int GAPSCALE = 0;
+  float GAPSCALE = 0;
   int BORDERSIZE = 5;
   boolean ISTINT = true;
   boolean ISSTROKE = true;
@@ -25,17 +25,15 @@ abstract class Grid
   void init()
   {
     grids.clear();
-    initGridSize();
-    
+
     switchShape = walk_shape;
-    
     MAXSTEPS = Maximum_Steps;
-    STEPRATE = Step_Rate;
     STEPDIST = Step_Size;
     GAPSCALE = Step_Scale;
     ISTINT = Simulate_Terrain;
     ISSTROKE = Use_Stroke;
     constrained = Constrain_Steps;
+
     if (Use_random_seed) {
       randomSeed(seed);
     }
@@ -44,10 +42,13 @@ abstract class Grid
     } else {
       noStroke();
     }
+
+    initGridSize();
   }
 
   void quickUpdate()
   {
+    STEPRATE = Step_Rate;
     for (int i=0; i<STEPRATE; i++) {
       update();
     }

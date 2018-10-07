@@ -16,8 +16,8 @@ void drawUI()
   cp.addSlider("Step_Rate").setSize(150, 20).setPosition(20, 240).setRange(1, 1000).setCaptionLabel("Step  Rate").setValue(10);
   cp.getController("Step_Rate").getCaptionLabel().align(ControlP5.LEFT, ControlP5.TOP_OUTSIDE).setPaddingX(0);
 
-  cp.addSlider("Step_Size").setSize(50, 20).setPosition(20, 300).setRange(2, 20).setValue(10);
-  cp.addSlider("Step_Scale").setSize(50, 20).setPosition(20, 330).setRange(0, 10);
+  cp.addSlider("Step_Size").setSize(50, 20).setPosition(20, 300).setRange(10, 30).setValue(10);
+  cp.addSlider("Step_Scale").setSize(50, 20).setPosition(20, 330).setRange(1, 1.5);
   cp.addToggle("Constrain_Steps").setPosition(20, 400).setSize(20, 20).setValue(true);
   cp.addToggle("Simulate_Terrain").setPosition(20, 440).setSize(20, 20).setValue(true);
   cp.addToggle("Use_Stroke").setPosition(20, 480).setSize(20, 20).setValue(true);
@@ -60,8 +60,8 @@ void Step_Size(int size) {
   Step_Size = size;
 }
 
-int Step_Scale;
-void Step_Scale(int scale) {
+float Step_Scale;
+void Step_Scale(float scale) {
   Step_Scale = scale;
 }
 
