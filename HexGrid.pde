@@ -8,16 +8,12 @@ class HexGrid extends Grid
   }
 
   @Override
-    void init()
+    void initGridSize()
   {
     spawn_width = (int)(width/(STEPDIST*sqrt(3))*2);
     spawn_height = (int)(height/(STEPDIST));
     grids.clear();
     pos = new PVector(spawn_width/2, spawn_height/2);
-    MAXSTEPS = stepRecorder;
-    if (useSeed) {
-      randomSeed(seed);
-    }
   }
 
   @Override

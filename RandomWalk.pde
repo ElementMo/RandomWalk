@@ -1,5 +1,6 @@
 RectGrid rg;
 HexGrid hg;
+int switchShape = 0;
 
 void setup()
 {
@@ -18,10 +19,10 @@ void draw()
   if (startToggle) {
     switch(switchShape) {
     case 0:
-      rg.quickUpdate(stepRate);
+      rg.quickUpdate();
       break;
     case 1:
-      hg.quickUpdate(stepRate);
+      hg.quickUpdate();
       break;
     }
   }
