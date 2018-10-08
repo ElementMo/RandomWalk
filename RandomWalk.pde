@@ -28,4 +28,5 @@ void draw()
   }
   fill(0, 0, 100);
   rect(100, height/2, 200, height);
+  System.gc();
 }
